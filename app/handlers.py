@@ -48,7 +48,7 @@ async def start_generate(message: Message, state: FSMContext):
         phrases = await ft.generate_list_of_prases(map(int, arr))
     await state.set_state(st.start_state.list_of_phrases)
     await state.update_data(list_of_phrases=phrases)
-    first = await ft.generate_random_number(len(phrases))
+    first = await ft.generate_random_number(len(phrases)-1)
     await state.set_state(st.start_state.cur)
     await state.update_data(cur=first)
     await message.answer(phrases[first][1], reply_markup=kb.TipKb)
@@ -62,7 +62,7 @@ async def training(message: Message, state: FSMContext):
     await state.update_data(prev=data["cur"])
     number = data['cur']
     while number == data['cur']:
-        number = await ft.generate_random_number(len(data['list_of_phrases']))
+        number = await ft.generate_random_number(len(data['list_of_phrases'])-1)
     await state.set_state(st.start_state.cur)
     await state.update_data(cur=number)
     await message.answer(data['list_of_phrases'][number][1], reply_markup=kb.TipKb)
@@ -80,7 +80,7 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
         await state.update_data(prev=data["cur"])
         number = data['cur']
         while number == data['cur']:
-            number = await ft.generate_random_number(len(data['list_of_phrases']))
+            number = await ft.generate_random_number(len(data['list_of_phrases'])-1)
         await state.set_state(st.start_state.cur)
         await state.update_data(cur=number)
         await call.message.answer(data['list_of_phrases'][number][1], reply_markup=kb.TipKb)
