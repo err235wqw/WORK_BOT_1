@@ -39,7 +39,13 @@ async def start_generate(message: Message, state: FSMContext):
     if message.text == 'Все' or message.text == 'все' or message.text == 'Всё' or message.text == 'всё' or message.text == 'All' or message.text == 'all':
         phrases = await ft.generate_list_of_prases()
     else:
-        phrases = await ft.generate_list_of_prases(map(int, message.text.split(',')))
+        arr = message.text.split(',')
+        fl = True
+        for i in arr:
+            if i not in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']:
+                await message.answer('Некорректно введены номера', reply_markup=None)
+                return
+        phrases = await ft.generate_list_of_prases(map(int, arr))
     await state.set_state(st.start_state.list_of_phrases)
     await state.update_data(list_of_phrases=phrases)
     first = await ft.generate_random_number(len(phrases))
