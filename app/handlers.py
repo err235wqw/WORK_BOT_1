@@ -86,6 +86,10 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
         await call.message.answer(data['list_of_phrases'][number][1], reply_markup=kb.TipKb)
         await call.answer()
         await state.set_state(st.start_state.train)
+    elif call.data == 'menu':
+        await call.message.answer(src.start_phrase, reply_markup=None)
+        await call.message.answer(src.choose_phrase, reply_markup=None)
+        await state.set_state(st.start_state.choose)
 
 
 # endregion
