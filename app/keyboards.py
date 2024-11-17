@@ -6,9 +6,12 @@ TipKb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(
         text="Дальше", callback_data="next")],
     [InlineKeyboardButton(text="Выйти в меню", callback_data='menu')],
+    [InlineKeyboardButton(text='Сменить тему', callback_data='change_theme')],
 ])
 Next = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(
         text="Дальше", callback_data="next")],
-    [InlineKeyboardButton(text="Выйти в меню", callback_data='menu')]
+    [InlineKeyboardButton(text="Выйти в меню", callback_data='menu')],
+    [InlineKeyboardButton(text='Сменить тему', callback_data='change_theme')],
 ])
+

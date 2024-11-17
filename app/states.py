@@ -7,3 +7,4 @@ class start_state(StatesGroup):
     cur = State()
     prev = State()
     list_of_phrases = State()
+    theme_number = State()
