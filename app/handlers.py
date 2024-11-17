@@ -99,7 +99,7 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
         await state.set_state(st.start_state.choose)
     elif call.data == 'change_theme':
         theme_number = data.get('theme_number', 0)
-        while theme_number != data.get('theme_number', 0):
+        while theme_number == data.get('theme_number', 0):
             theme_number = await ft.generate_random_number(99)
         await state.set_state(st.start_state.theme_number)
         await state.update_data(theme_number=theme_number)
