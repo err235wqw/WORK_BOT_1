@@ -112,7 +112,7 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
         await state.set_state(st.start_state.cur)
         await state.update_data(cur=number)
         await call.message.answer(src.new_theme, reply_markup=None)
-        await call.message.answer(src.problems[data.get('theme_number', 0)], reply_markup=None)
+        await call.message.answer(src.problems[theme_number], reply_markup=None)
         await call.message.answer(data['list_of_phrases'][number][1], reply_markup=kb.TipKb)
         await call.answer()
         await state.set_state(st.start_state.train)
