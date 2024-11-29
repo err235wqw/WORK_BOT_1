@@ -8,7 +8,7 @@ User=root
 Restart=always
 RestartSec=3
 WorkingDirectory=/home/tgbot/app/WORK_BOT_1
-ExecStart=/home/home/tgbot/app/WORK_BOT_1/.venv/bin/python3 /home/tgbot/app/WORK_BOT_1/run.py
+ExecStart=/home/home/tgbot/app/WORK_BOT_1/venv/bin/python3 /home/tgbot/app/WORK_BOT_1/run.py
 
 [Install]
 WantedBy=multi-user.target
