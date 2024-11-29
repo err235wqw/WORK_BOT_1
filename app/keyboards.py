@@ -1,4 +1,4 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
 
 TipKb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(
@@ -13,5 +13,8 @@ Next = InlineKeyboardMarkup(inline_keyboard=[
         text="Дальше", callback_data="next")],
     [InlineKeyboardButton(text="Выйти в меню", callback_data='menu')],
     [InlineKeyboardButton(text='Сменить тему', callback_data='change_theme')],
+])
+ChooseKoloda = ReplyKeyboardMarkup([[KeyboardButton(text='Стандартные колоды'),
+                                    KeyboardButton(text='Колоды "ДА"')],
 ])
 

@@ -2,25 +2,38 @@ from random import randint
 
 import app.sourse as srs
 
-phrases_dict = {
-    1: srs.phrases_voobrajenie,
-    2: srs.phrases_neobhodimost,
-    3: srs.phrases_osoznanie,
-    4: srs.phrases_slova_sviazki,
-    5: srs.phrases_psevdologika,
-    6: srs.phrases_otricanie,
-    7: srs.phrases_dopushenie,
-    8: srs.phrases_smiagchiteli,
-    9: srs.phrases_akcellerators,
-    10: srs.phrases_predvkushenie
-
+phrases_dict_standart = {
+    1: srs.phrases_voobrajenie_col1,
+    2: srs.phrases_neobhodimost_col1,
+    3: srs.phrases_osoznanie_col1,
+    4: srs.phrases_slova_sviazki_col1,
+    5: srs.phrases_psevdologika_col1,
+    6: srs.phrases_otricanie_col1,
+    7: srs.phrases_dopushenie_col1,
+    8: srs.phrases_smiagchiteli_col1,
+    9: srs.phrases_akcellerators_col1,
+    10: srs.phrases_predvkushenie_col1,
+}
+phrases_dict_da = {
+    1:srs.phrases_neobhodimost_col2,
+    2:srs.phrases_voprosi_realnosti_col2,
+    3:srs.phrases_voprosi_suchestvovania_col2,
+    4:srs.phrases_istoric_voprosi_col2,
+    5:srs.phrases_uslovnie_voprosi_col2,
+    6:srs.phrases_voprosi_buduchego_col2,
+    7:srs.phrases_voprosi_vosmozhnosti_col2,
+    8:srs.phrases_voprosi_voobrazhenia_col2,
+    9:srs.phrases_voprosi_deistvia_col2,
+    10:srs.phrases_voprosi_identichnosti_col2,
 }
 
-
-async def generate_list_of_prases(list_of_numbers: list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) -> list:
+async def generate_list_of_prases(list_of_numbers: list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], Da: bool = False) -> list:
     list_of_phrases = []
     for i in list_of_numbers:
-        list_of_phrases.extend(phrases_dict.get(i, []))
+        if Da:
+            list_of_phrases.extend(phrases_dict_da.get(i, []))
+        else:
+            list_of_phrases.extend(phrases_dict_standart.get(i, []))
     return list_of_phrases
 
 
