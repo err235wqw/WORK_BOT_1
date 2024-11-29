@@ -113,9 +113,8 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
         await call.answer()
         await state.set_state(st.start_state.train)
     elif call.data == 'menu':
-        await call.message.answer(src.start_phrase, reply_markup=None)
-        await call.message.answer(src.choose_phrase, reply_markup=None)
-        await state.set_state(st.start_state.choose)
+        await call.message.answer(src.start_phrase, reply_markup=kb.ChooseKoloda)
+        await state.set_state(st.start_state.start)
     elif call.data == 'change_theme':
         theme_number = data.get('theme_number', 0)
         while theme_number == data.get('theme_number', 0):

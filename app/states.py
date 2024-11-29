@@ -1,8 +1,7 @@
 from aiogram.fsm.state import State, StatesGroup
 
 class start_state(StatesGroup):
-    chooseStandart = State()
-    chooseDa = State()
+    choose = State()
     train = State()
     tip = State()
     cur = State()
