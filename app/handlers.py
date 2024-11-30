@@ -4,7 +4,6 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.utils.chat_action import ChatActionSender
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types import ReplyKeyboardRemove
 
 
@@ -35,7 +34,7 @@ async def cmd_start(message: Message, state: FSMContext):
 # region Start
 @router.message(st.start_state.start, F.text == 'Стандартные колоды')
 async def start_generate(message: Message, state: FSMContext):
-    await message.answer(src.choose_phrase, reply_markup=None)
+    await message.answer(src.choose_phrase, reply_markup=ReplyKeyboardRemove)
     await state.set_state(st.start_state.Da)
     await state.update_data(Da=False)
     await state.set_state(st.start_state.choose)
@@ -43,7 +42,7 @@ async def start_generate(message: Message, state: FSMContext):
 
 @router.message(st.start_state.start, F.text == 'Колоды "ДА"')
 async def start_generate(message: Message, state: FSMContext):
-    await message.answer(src.choose_phrase, reply_markup=None)
+    await message.answer(src.choose_phrase, reply_markup=ReplyKeyboardRemove)
     await state.set_state(st.start_state.Da)
     await state.update_data(Da=True)
     await state.set_state(st.start_state.choose)
