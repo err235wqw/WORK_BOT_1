@@ -1,24 +1,20 @@
-import os
-import asyncio
+from handlers import client, admin, other
+from create_bot import dp, bot
+from asyncio import run
 
-from dotenv import load_dotenv
-from aiogram import Bot, Dispatcher
-from aiogram.fsm.storage.memory import MemoryStorage
 
-from app.handlers import router
+async def on_startup():
+    print('Бот запустился')
 
 
 async def main():
-    load_dotenv()
-    token = os.getenv('TG_TOKEN')
-    bot = Bot(token=token)
-    dp = Dispatcher()
-    dp.include_router(router)
-    await dp.start_polling(bot)
-
+    client.register_handlers_client(dp)
+    # admin.register_handlers_client(dp)
+    # other.register_handlers_client(dp)
+    await dp.start_polling(bot, on_startup=on_startup)
 
 if __name__ == '__main__':
     try:
-        asyncio.run(main())
+        run(main())
     except KeyboardInterrupt:
         print('Бот выключен')
