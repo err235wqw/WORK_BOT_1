@@ -14,7 +14,7 @@ import app.feature as ft
 
 
 async def command_start(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@hypnosis_language', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=2078501178, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -23,7 +23,7 @@ async def command_start(message: Message, state: FSMContext):
 
 
 async def command_help(message: Message):
-    sub = await bot.get_chat_member(chat_id='@hypnosis_language', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=2078501178, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -32,7 +32,7 @@ async def command_help(message: Message):
 
 # region Start
 async def post_start_generate(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@hypnosis_language', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=2078501178, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -40,16 +40,16 @@ async def post_start_generate(message: Message, state: FSMContext):
         Da = data.get('Da', False)
         await state.set_state(st.start_state.post_start)
         bll = False
-        if message.text in ['Переговоры','Продажи','Отношения между мужчиной и женщиной','Отношения между родителями и ребенком']:
+        if message.text in ['Переговоры', 'Продажи', 'Отношения между мужчиной и женщиной', 'Отношения между родителями и ребенком']:
             await state.update_data(post_start=message.text)
             bll = True
         if bll or message.text == 'Продолжить со случайной темой':
             if not bll:
                 await state.set_state(st.start_state.proverka)
-                await state.update_data(proverka = False)
+                await state.update_data(proverka=False)
             else:
                 await state.set_state(st.start_state.proverka)
-                await state.update_data(proverka = True)
+                await state.update_data(proverka=True)
             if Da:
                 await message.answer(src.choose_phrase_da, reply_markup=ReplyKeyboardRemove())
             else:
@@ -59,8 +59,9 @@ async def post_start_generate(message: Message, state: FSMContext):
             await state.set_state(st.start_state.post_start)
             await message.answer(src.choose_theme, reply_markup=kb.ChooseTheme)
 
+
 async def start_generate_standart(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@hypnosis_language', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=2078501178, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -71,7 +72,7 @@ async def start_generate_standart(message: Message, state: FSMContext):
 
 
 async def start_generate_da(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@hypnosis_language', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=2078501178, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -84,7 +85,7 @@ async def start_generate_da(message: Message, state: FSMContext):
 
 # region training
 async def start_generate(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@hypnosis_language', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=2078501178, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -122,7 +123,7 @@ async def start_generate(message: Message, state: FSMContext):
 
 
 async def training(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@hypnosis_language', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=2078501178, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -143,12 +144,12 @@ async def training(message: Message, state: FSMContext):
 
 
 async def heandler_callback(call: CallbackQuery, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@hypnosis_language', user_id=call.message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=2078501178, user_id=call.message.from_user.id)
     if sub.status == 'left':
         await call.message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
         advert = ft.generate_add()
-        if(advert!=''):
+        if (advert != ''):
             await call.message.answer(advert, reply_markup=None)
         data = await state.get_data()
         if call.data == 'tip':
@@ -188,7 +189,7 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
                 await state.set_state(st.start_state.post_number)
             post_number = await ft.generate_random_number(len(src.categories[data.get('post_start', 'Продажи')])-1)
             await state.update_data(post_number=post_number)
-            
+
             await state.set_state(st.start_state.prev)
             await state.update_data(prev=data["cur"])
             number = data['cur']
@@ -217,7 +218,8 @@ def register_handlers_client(dp: Dispatcher):
                         F.text == 'Стандартные колоды')
     dp.message.register(start_generate_da, st.start_state.start,
                         F.text == 'Колоды "ДА"')
-    dp.message.register(post_start_generate, st.start_state.start, st.start_state.post_start, F.text)
+    dp.message.register(post_start_generate, st.start_state.start,
+                        st.start_state.post_start, F.text)
     dp.message.register(
         start_generate, st.start_state.choose, F.text)
     dp.message.register(training, st.start_state.train,
