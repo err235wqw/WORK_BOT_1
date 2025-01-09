@@ -15,17 +15,18 @@ phrases_dict_standart = {
     10: srs.phrases_predvkushenie_col1,
 }
 phrases_dict_da = {
-    1:srs.phrases_neobhodimost_col2,
-    2:srs.phrases_voprosi_realnosti_col2,
-    3:srs.phrases_voprosi_suchestvovania_col2,
-    4:srs.phrases_istoric_voprosi_col2,
-    5:srs.phrases_uslovnie_voprosi_col2,
-    6:srs.phrases_voprosi_buduchego_col2,
-    7:srs.phrases_voprosi_vosmozhnosti_col2,
-    8:srs.phrases_voprosi_voobrazhenia_col2,
-    9:srs.phrases_voprosi_deistvia_col2,
-    10:srs.phrases_voprosi_identichnosti_col2,
+    1: srs.phrases_neobhodimost_col2,
+    2: srs.phrases_voprosi_realnosti_col2,
+    3: srs.phrases_voprosi_suchestvovania_col2,
+    4: srs.phrases_istoric_voprosi_col2,
+    5: srs.phrases_uslovnie_voprosi_col2,
+    6: srs.phrases_voprosi_buduchego_col2,
+    7: srs.phrases_voprosi_vosmozhnosti_col2,
+    8: srs.phrases_voprosi_voobrazhenia_col2,
+    9: srs.phrases_voprosi_deistvia_col2,
+    10: srs.phrases_voprosi_identichnosti_col2,
 }
+
 
 async def generate_list_of_prases(list_of_numbers: list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], Da: bool = False) -> list:
     list_of_phrases = []
@@ -41,8 +42,10 @@ async def generate_random_number(n: int = 0) -> int:
     rnd = randint(0, n)
     return rnd
 
+
 async def generate_add() -> str:
     if not not getrandbits(1):
-        return srs.advert_phrases[randint(0,len(srs.advert_phrases))-1]
+        add = srs.advert_phrases[randint(0, len(srs.advert_phrases))-1]
+        return add
     else:
         return ''
