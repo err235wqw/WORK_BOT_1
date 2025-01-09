@@ -44,7 +44,7 @@ async def post_start_generate(message: Message, state: FSMContext):
             await state.update_data(post_start=message.text)
             bll = True
         if bll or message.text == 'Продолжить со случайной темой':
-            if bll:
+            if not bll:
                 await state.set_state(st.start_state.proverka)
                 await state.update_data(proverka=False)
             else:
@@ -179,19 +179,20 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
             await call.message.answer(src.start_phrase, reply_markup=kb.ChooseKoloda)
             await state.set_state(st.start_state.start)
         elif call.data == 'change_theme':
-            if data.get('proverka', True):
+            if not data.get('proverka', True):
+                theme_number = data.get('theme_number', 0)
+                while theme_number == data.get('theme_number', 0):
+                    theme_number = await ft.generate_random_number(99)
+                await state.set_state(st.start_state.theme_number)
+                await state.update_data(theme_number=theme_number)
+            else:
                 post_number = data.get('post_number', 0)
                 while post_number == data.get('post_number', 0):
                     post_number = await ft.generate_random_number(len(src.categories[data.get('post_start', 'Продажи')])-1)
                 print(post_number)
                 await state.set_state(st.start_state.post_number)
                 await state.update_data(post_number=post_number)
-            else:
-                theme_number = data.get('theme_number', 0)
-                while theme_number == data.get('theme_number', 0):
-                    theme_number = await ft.generate_random_number(99)
-                await state.set_state(st.start_state.theme_number)
-                await state.update_data(theme_number=theme_number)
+
             print(data.get('proverka', True))
             await state.set_state(st.start_state.prev)
             await state.update_data(prev=data["cur"])
