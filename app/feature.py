@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, getrandbits
 
 import app.sourse as srs
 
@@ -40,3 +40,9 @@ async def generate_list_of_prases(list_of_numbers: list = [1, 2, 3, 4, 5, 6, 7, 
 async def generate_random_number(n: int = 0) -> int:
     rnd = randint(0, n)
     return rnd
+
+async def generate_add() -> str:
+    if not not random.getrandbits(1):
+        return srs.advert_phrases[randint(0,len(srs.advert_phrases))-1]
+    else:
+        return ''

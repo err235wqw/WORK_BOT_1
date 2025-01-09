@@ -147,7 +147,7 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
     if sub.status == 'left':
         await call.message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
-        advert = src.generate_add()
+        advert = ft.generate_add()
         if(advert!=''):
             await call.message.answer(advert, reply_markup=None)
         data = await state.get_data()

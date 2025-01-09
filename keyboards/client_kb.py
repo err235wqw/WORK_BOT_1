@@ -16,3 +16,9 @@ Next = InlineKeyboardMarkup(inline_keyboard=[
 ])
 ChooseKoloda = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='Стандартные колоды'),
                                              KeyboardButton(text='Колоды "ДА"')]], resize_keyboard=True, input_field_placeholder='Выберите набор колод')
+
+ChooseTheme = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='Переговоры'),
+                                             KeyboardButton(text='Продажи')],
+                                             [KeyboardButton(text='Отношения между мужчиной и женщиной'),
+                                             KeyboardButton(text='Отношения между родителями и ребенком')],
+                                             [KeyboardButton(text='Продолжить со случайной темой')]], resize_keyboard=True, input_field_placeholder='Выберите тему')
