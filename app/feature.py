@@ -42,7 +42,7 @@ async def generate_random_number(n: int = 0) -> int:
     return rnd
 
 async def generate_add() -> str:
-    if not not random.getrandbits(1):
+    if not not getrandbits(1):
         return srs.advert_phrases[randint(0,len(srs.advert_phrases))-1]
     else:
         return ''

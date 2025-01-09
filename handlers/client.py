@@ -75,7 +75,7 @@ async def start_generate_da(message: Message, state: FSMContext):
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
-        await message.answer(src.choose_theme, reply_markup=kn.ChooseTheme)
+        await message.answer(src.choose_theme, reply_markup=kb.ChooseTheme)
         await state.set_state(st.start_state.Da)
         await state.update_data(Da=True)
         await state.set_state(st.start_state.post_start)
@@ -135,9 +135,9 @@ async def training(message: Message, state: FSMContext):
         await state.set_state(st.start_state.cur)
         await state.update_data(cur=number)
         if data.get('proverka', True):
-            await message.answer(src.categories[data.get('post_start', 'Продажи')][post_number], reply_markup=None)
+            await message.answer(src.categories[data.get('post_start', 'Продажи')][data['post_number']], reply_markup=None)
         else:
-            await message.answer(src.problems[theme_number], reply_markup=None)
+            await message.answer(src.problems[data['theme_number']], reply_markup=None)
         await message.answer(data['list_of_phrases'][number][1], reply_markup=kb.TipKb)
         await state.set_state(st.start_state.train)
 
@@ -153,9 +153,9 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
         data = await state.get_data()
         if call.data == 'tip':
             if data.get('proverka', True):
-                await message.answer(src.categories[data.get('post_start', 'Продажи')][post_number], reply_markup=None)
+                await call.message.answer(src.categories[data.get('post_start', 'Продажи')][post_number], reply_markup=None)
             else:
-                await message.answer(src.problems[theme_number], reply_markup=None)
+                await call.message.answer(src.problems[theme_number], reply_markup=None)
             await call.message.answer(data['list_of_phrases'][data['cur']][2], reply_markup=kb.Next)
             await call.answer()
         elif call.data == 'next':
@@ -168,9 +168,9 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
             await state.update_data(cur=number)
 
             if data.get('proverka', True):
-                await message.answer(src.categories[data.get('post_start', 'Продажи')][post_number], reply_markup=None)
+                await call.message.answer(src.categories[data.get('post_start', 'Продажи')][post_number], reply_markup=None)
             else:
-                await message.answer(src.problems[theme_number], reply_markup=None)
+                await call.message.answer(src.problems[theme_number], reply_markup=None)
             await call.message.answer(data['list_of_phrases'][number][1], reply_markup=kb.TipKb)
             await call.answer()
             await state.set_state(st.start_state.train)
@@ -199,9 +199,9 @@ async def heandler_callback(call: CallbackQuery, state: FSMContext):
             await call.message.answer(src.new_theme, reply_markup=None)
             # Проверка
             if data.get('proverka', True):
-                await message.answer(src.categories[data.get('post_start', 'Продажи')][post_number], reply_markup=None)
+                await call.message.answer(src.categories[data.get('post_start', 'Продажи')][post_number], reply_markup=None)
             else:
-                await message.answer(src.problems[theme_number], reply_markup=None)
+                await call.message.answer(src.problems[theme_number], reply_markup=None)
             await call.message.answer(data['list_of_phrases'][number][1], reply_markup=kb.TipKb)
             await call.answer()
             await state.set_state(st.start_state.train)
