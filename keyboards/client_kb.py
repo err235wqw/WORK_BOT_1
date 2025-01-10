@@ -14,7 +14,7 @@ Next = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Выйти в меню", callback_data='menu')],
     [InlineKeyboardButton(text='Сменить тему', callback_data='change_theme')],
 ])
-ChooseKoloda = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='Стандартные колоды'),
+ChooseKoloda = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='Колоды гипнотического языка'),
                                              KeyboardButton(text='Колоды "ДА"')]], resize_keyboard=True, input_field_placeholder='Выберите набор колод')
 
 ChooseTheme = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='Переговоры'),
