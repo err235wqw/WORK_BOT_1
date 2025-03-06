@@ -218,7 +218,7 @@ def register_handlers_client(dp: Dispatcher):
     dp.message.register(command_help, Command('help'),
                         )
     dp.message.register(start_generate_standart, st.start_state.start,
-                        F.text == 'Стандартные колоды')
+                        F.text == 'Колоды гипнотического языка')
     dp.message.register(start_generate_da, st.start_state.start,
                         F.text == 'Колоды "ДА"')
     dp.message.register(post_start_generate, st.start_state.post_start, F.text)
