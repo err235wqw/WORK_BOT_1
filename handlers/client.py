@@ -8,13 +8,13 @@ from create_bot import dp, bot
 from keyboards import client_kb as kb
 from states import client_st as st
 from filters import IsSubscriber
-
+from create_bot import sub_channel_id
 import app.sourse as src
 import app.feature as ft
 
 
 async def command_start(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@testnew29', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=sub_channel_id, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -23,7 +23,7 @@ async def command_start(message: Message, state: FSMContext):
 
 
 async def command_help(message: Message):
-    sub = await bot.get_chat_member(chat_id='@testnew29', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=sub_channel_id, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -32,7 +32,7 @@ async def command_help(message: Message):
 
 # region Start
 async def post_start_generate(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@testnew29', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=sub_channel_id, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -61,7 +61,7 @@ async def post_start_generate(message: Message, state: FSMContext):
 
 
 async def start_generate_standart(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@testnew29', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=sub_channel_id, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -72,7 +72,7 @@ async def start_generate_standart(message: Message, state: FSMContext):
 
 
 async def start_generate_da(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@testnew29', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=sub_channel_id, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -85,7 +85,7 @@ async def start_generate_da(message: Message, state: FSMContext):
 
 # region training
 async def start_generate(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@testnew29', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=sub_channel_id, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -123,7 +123,7 @@ async def start_generate(message: Message, state: FSMContext):
 
 
 async def training(message: Message, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@testnew29', user_id=message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=sub_channel_id, user_id=message.from_user.id)
     if sub.status == 'left':
         await message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
@@ -144,7 +144,7 @@ async def training(message: Message, state: FSMContext):
 
 
 async def heandler_callback(call: CallbackQuery, state: FSMContext):
-    sub = await bot.get_chat_member(chat_id='@testnew29', user_id=call.message.from_user.id)
+    sub = await bot.get_chat_member(chat_id=sub_channel_id, user_id=call.message.from_user.id)
     if sub.status == 'left':
         await call.message.answer(f'Подпишитесь на телеграмм канал:\nhttps://t.me/hypnosis_language', reply_markup=ReplyKeyboardRemove())
     else:
